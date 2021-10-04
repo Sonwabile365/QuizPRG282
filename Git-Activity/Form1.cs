@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Git_Activity
 {
@@ -15,7 +16,17 @@ namespace Git_Activity
         public Form1()
         {
             InitializeComponent();
+            
         }
-
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string path = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Untitled.txt");
+            List<string> TextfileList = File.ReadAllLines(path).ToList<string>();
+            foreach(var item in TextfileList)
+            {
+                lstBox1.Items.Add((item));
+            }
+        }
     }
 }
